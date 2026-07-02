@@ -1,4 +1,5 @@
 using LibraryManagementSystem.Data;
+using LibraryManagementSystem.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,23 @@ namespace LibraryManagementSystem
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequiredUniqueChars = 1;
+
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(connectionString));
+
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
@@ -37,6 +52,7 @@ namespace LibraryManagementSystem
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
