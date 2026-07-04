@@ -5,9 +5,19 @@
 <form asp-action="Register" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div>
+        <label asp-for="FullName">Full Name</label><br />
+        <input asp-for="FullName" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div>
         <label asp-for="Email">Email</label><br />
         <input asp-for="Email" />
         <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="PhoneNumber">PhoneNumber</label><br />
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="Password">Password</label><br />

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260702102956_addedregistration")]
-    partial class addedregistration
+    [Migration("20260703183052_crud")]
+    partial class crud
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,7 +115,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("authors");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Book", b =>
@@ -147,7 +147,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("books");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.BorrowBook", b =>
@@ -175,7 +175,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BorrowId");
 
-                    b.ToTable("borrowBooks");
+                    b.ToTable("BorrowBooks");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Category", b =>
@@ -192,7 +192,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Member", b =>
@@ -217,7 +217,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("members");
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

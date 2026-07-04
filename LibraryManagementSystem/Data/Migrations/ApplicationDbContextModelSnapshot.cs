@@ -45,7 +45,6 @@ namespace LibraryManagementSystem.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -112,7 +111,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("authors");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Book", b =>
@@ -144,7 +143,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("books");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.BorrowBook", b =>
@@ -172,7 +171,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BorrowId");
 
-                    b.ToTable("borrowBooks");
+                    b.ToTable("BorrowBooks");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Category", b =>
@@ -189,7 +188,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Member", b =>
@@ -208,13 +207,13 @@ namespace LibraryManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("members");
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

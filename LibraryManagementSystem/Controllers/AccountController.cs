@@ -34,7 +34,9 @@ namespace LibraryManagementSystem.Controllers
             var user = new ApplicationUser
             {
                 UserName = model.Email,
-                Email = model.Email
+                Email = model.Email,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
             };
             
             var result = await _userManager.CreateAsync(user,model.Password);
