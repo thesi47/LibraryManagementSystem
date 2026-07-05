@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryManagementSystem.Entities.ApplicationUser>
+﻿@model IEnumerable<LibraryManagementSystem.Models.UserListViewModel>
 
 @{
     ViewData["Title"] = "Users";
@@ -20,6 +20,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th>User Name</th>
+                        <th>Role</th>
                         <th>Email</th>
                         <th>PhoneNumber</th>
                         <th width="220">Actions</th>
@@ -30,7 +31,14 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.UserName</td>
+                            <td>@item.FullName</td>
+                            <td>
+
+                            <span class="badge bg-primary">
+                                @item.Role
+                            </span>
+                            </td>
+
                             <td>@item.Email</td>
                             <td>@item.PhoneNumber</td>
 
@@ -51,6 +59,12 @@
                                    asp-route-id="@item.Id"
                                    class="btn btn-danger btn-sm">
                                     Delete
+                                </a>
+                                <a asp-controller="Role"
+                                   asp-action="AssignRole"
+                                   asp-route-userId="@item.Id"
+                                   class="btn btn-success">
+                                    Assign Role
                                 </a>
                             </td>
 

@@ -3,9 +3,11 @@ using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryManagementSystem.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryManagementSystem.Controllers
 {
+        [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
