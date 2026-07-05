@@ -4,19 +4,16 @@ using LibraryManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LibraryManagementSystem.Data.Migrations
+namespace LibraryManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260702102956_addedregistration")]
-    partial class addedregistration
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +45,6 @@ namespace LibraryManagementSystem.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -115,7 +111,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("authors");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Book", b =>
@@ -147,7 +143,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("books");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.BorrowBook", b =>
@@ -175,7 +171,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("BorrowId");
 
-                    b.ToTable("borrowBooks");
+                    b.ToTable("BorrowBooks");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Category", b =>
@@ -192,7 +188,7 @@ namespace LibraryManagementSystem.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Entities.Member", b =>
@@ -211,13 +207,13 @@ namespace LibraryManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("members");
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

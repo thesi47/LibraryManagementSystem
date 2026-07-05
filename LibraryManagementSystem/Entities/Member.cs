@@ -7,7 +7,7 @@ namespace LibraryManagementSystem.Entities
         [Key]
         public int MemberId { get; set; }
         public string MemberName { get; set; }
-        public string PhoneNumber {  get; set; }
+        public string Phone {  get; set; }
         public string Email { get; set; }
 
     }

@@ -31,7 +31,7 @@ namespace LibraryManagementSystem.Controllers
                 var entity = new Member
                 {
                     MemberName = model.MemberName,
-                    PhoneNumber = model.PhoneNumber,
+                    Phone = model.Phone,
                     Email = model.Email
                 };
 

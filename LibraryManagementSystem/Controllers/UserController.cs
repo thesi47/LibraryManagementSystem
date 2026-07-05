@@ -40,14 +40,15 @@ namespace LibraryManagementSystem.Controllers
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                FullName = model.FullName
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "Member");
+                //await _userManager.AddToRoleAsync(user, "Member");
                 return RedirectToAction(nameof(Index));
             }
 
