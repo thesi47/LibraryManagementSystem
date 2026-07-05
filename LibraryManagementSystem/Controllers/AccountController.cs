@@ -57,14 +57,30 @@ namespace LibraryManagementSystem.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid) return View(model);
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            if (!ModelState.IsValid)
+                return View(model);
 
-            if(result.Succeeded)  return RedirectToAction("Index", "Home");
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
-            ModelState.AddModelError("", "Invalid Login Attempt");
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                user.UserName,
+                model.Password,
+                model.RememberMe,
+                false);
+
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Home");
+
+            ModelState.AddModelError("", "Invalid login attempt.");
             return View(model);
         }
         [HttpPost]
